@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <title>FLIGHTS LIST</title>
+</head>
+<body>
+  <h1>ALL FLIGHTS</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Airline</th>
+        <th>airport</th>
+        <th>FlightNo</th>
+        <th>Departs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flights.forEach(f => { %>
+        <tr>
+          <td><%= f.Airline %></td>
+          <td><%= f.Airport %></td>
+          <td><%= f.FlightNo %></td>
+          <td><%= f.Departs%></td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+  <br>
+  <a href='/'>HOME</a>
+</body>
+</html>
