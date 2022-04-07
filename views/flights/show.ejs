@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Info</title>
+</head>
+<body>
+  <h1>Flight Details</h1>
+  <h2>Airline : </h2> <%= flight.airline %> 
+  <br>
+  <h2>Airport : </h2><%= flight.airport %> 
+  <br>
+  <h2>Flight Number : </h2><%= flight.flightNo %> 
+  <br>
+  <h2>Departure Date/Time : </h2><%= flight.departs %>
+  <br> 
+  <h2>Destinations</h2>
+  <%= flight.destination %>
+  <br>
+  <h2>CHOOSE DESTINATION(S)</h1>
+    <form id="destination-form" method="POST" action="/flights/<%=flight._id%>/destinations" >
+  <select name="airport">
+    <option>LAX</option>
+    <option>AUS</option>
+    <option>DFW</option>
+    <option>DEN</option>
+    <option>SAN</option>
+  </select>
+  <div>ARRIVAL</div>
+  <input name="arrival" type="datetime-local">
+  <button type="submit" value="ADD DESTINATION">ADD DESTINATION</button>
+  <a href="/">HOME</a>
+</form>
+<% if (flight.destinations.length){ %> 
+  <table>
+    <thread>
+      <tr>
+        <th>Destinations</th>
+        <th>Arival</th>
+      </tr>
+    </thread>
+    <tbody>
+      <% flight.destinations.forEach(function(d){ %>
+        <tr>
+          <td> <%= d.airport %> </td>
+          <td> <%= d.arrival %> </td>
+        </tr> 
+      <% }) %> 
+    </tbody>
+  </table>
+  <% } else { %> 
+  <h5>Choose A Destination</h5>
+<% } %>
+<br>
+<a href="/">HOME</a>
+</label><br>
+
+</body>
+</html>
+

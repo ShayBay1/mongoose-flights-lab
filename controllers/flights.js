@@ -4,6 +4,7 @@ module.exports = {
     new: newFlight,
     create,
     index,
+    show,
   };
 
 function index (req, res){
@@ -12,6 +13,12 @@ function index (req, res){
   });
 }
 
+function show (req, res){
+// find flight by id and send that to rendered show.ejs view
+  Flight.findById(req.params.id, function(err, foundFlight){
+    res.render('flights/show', {flight: foundFlight});
+  });
+}
 function newFlight(req, res){
   res.render('flights/new');
 
@@ -27,7 +34,8 @@ function create (req, res){
   newFlight.save(function(err){
     if(err) return res.render('flights/new');
     console.log(newFlight);
-    res.redirect('/flights')
+    res.redirect(`/flights/${req.params.id}`)
+    console.log(newFlight)
   });
 }
 
